@@ -29,19 +29,11 @@ function HeaderNew() {
                                 transition: "transform 0.3s ease-in-out, margin-left 0.3s ease-in-out, box-shadow 0.3s ease-in-out, text-shadow 0.3s ease-in-out", // Adjust the duration as needed
                                 
                             }}
-                            onMouseEnter={(e) => {
-                                e.target.style.transform = "scale(1.5)";
-                                e.target.style.marginLeft = "5px"; // Adjust the distance as needed
-                                e.target.style.textShadow = "0 0 15px #FFD700, 0 0 15px #FFD700, 0 0 15px #FFD700"; // Apply glow on hover
-                            }}
-                            onMouseLeave={(e) => {
-                                e.target.style.transform = "scale(1)";
-                                e.target.style.marginLeft = "0";
-                                e.target.style.textShadow = "none"; 
-                            }}
                         >
-                            <i className="fa fa-graduation-cap fa-lg mr-2"></i>
-                            MediNex
+                            <a href="/" style={{color: "white", textDecoration: "none"}}>
+                                <i className="fa fa-graduation-cap fa-lg mr-2"></i>
+                                MediPrisc
+                            </a>
                         </span>
                       </a>
                         
