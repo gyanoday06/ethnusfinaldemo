@@ -1,6 +1,4 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
-import medlogo from "../patientImages/medlogo.jpeg";
 import register from "../patientImages/register.jpg";
 import { useNavigate } from "react-router-dom";
 
@@ -35,69 +33,20 @@ export default function AddPatient() {
         setImage(e.target.files[0])
     }
 
-    /*function myFunction() {
-        var x = document.getElementById("password");
-        if (x.type === "password") {
-            x.type = "text";
-        } else {
-            x.type = "password";
-        }
-    }*/
-
 
 
     function submit(e) {
         e.preventDefault();
-
-        if (nic.length == 0) {
-            setError(true)
-        } else if (nic.length > 12) {
-            setError(true)
-        } else if (nic.length < 12) {
-            setError(true)
+    
+        let hasError = false;
+    
+        if (nic.length == 0 || nic.length > 12 || nic.length < 12) {
+            setError(true);
+            hasError = true;
         }
-
-        function validateEmail(email) {
-            const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-            //setEmailError(re.test(email));
-
-            if (re.test(email)) {
-                setEmailError("")
-            }
-            else {
-                setEmailError("Enter the Valid Format")
-            }
-        }
-
-        function validatePhoneNumber(phone) {
-            var regex = /^(?:\+94|0)[78]\d{8}$/;
-
-
-            if (regex.test(phone)) {
-                setEmailError("")
-            }
-            else {
-                setEmailError("Enter the Valid Format")
-            }
-        }
-
-        function nicValidation(nic) {
-            var regex = /^([0-9]{9}[V|v|X|x]|[0-9]{12})$/;
-
-
-            if (regex.test(nic)) {
-                setEmailError("")
-            }
-            else {
-                setEmailError("Enter the Valid Format")
-            }
-        }
-
-        validateEmail(email)
-        validatePhoneNumber(phone)
-        nicValidation(nic)
-
-        if (name.length === 0 ||
+    
+        if (
+            name.length === 0 ||
             address.length === 0 ||
             birthdate.length === 0 ||
             gender.length === 0 ||
@@ -109,34 +58,15 @@ export default function AddPatient() {
             file_path.length === 0 ||
             password.length === 0
         ) {
-            setError(true)
+            setError(true);
+            hasError = true;
         }
-
-        const patient = new FormData();
-
-        patient.append("name", name);
-        patient.append("nic", nic);
-        patient.append("address", address);
-        patient.append("birthdate", birthdate);
-        patient.append("gender", gender);
-        patient.append("phone", phone);
-        patient.append("email", email);
-        patient.append("surgery", surgery);
-        patient.append("allergy", allergy);
-        patient.append("blood", blood);
-        patient.append("height", height);
-        patient.append("weight", weight);
-        patient.append("file_path", file_path);
-        patient.append("password", password);
-
-        axios.post("http://localhost:8050/patient/add", patient).then(function () {
-            alert("Patient Added!");
-            navigate(-1)
-        })
-            .catch(function (err) {
-                //alert(err);
-            });
+    
+        if (!hasError) {    
+            alert("Submitted Successfully!");
+        }
     }
+    
 
 
 
@@ -396,34 +326,34 @@ export default function AddPatient() {
                                                     </div>
 
                                                     <br /><div className="row d-flex justify-content-center">
-                                                    <button
-  type="submit"
-  class="btn text-white mt-2 mr-5"
-  style={{
-    background: "green",
-    width: "100px",
-    transition: "transform 0.3s ease",
-  }}
-  onClick={submit}
-  onMouseOver={(e) => (e.currentTarget.style.transform = "scale(1.1)")}
-  onMouseOut={(e) => (e.currentTarget.style.transform = "scale(1)")}
->
-  Register
-</button><br />
                                                         <button
-  type="button"
-  class="btn text-white mt-2"
-  style={{
-    background: "#E53D3D",
-    width: "100px",
-    transition: "transform 0.3s ease",
-  }}
-  onClick={() => navigate(-1)}
-  onMouseOver={(e) => (e.currentTarget.style.transform = "scale(1.1)")}
-  onMouseOut={(e) => (e.currentTarget.style.transform = "scale(1)")}
->
-  Cancel
-</button>
+                                                            type="submit"
+                                                            class="btn text-white mt-2 mr-5"
+                                                            style={{
+                                                                background: "green",
+                                                                width: "100px",
+                                                                transition: "transform 0.3s ease",
+                                                            }}
+                                                            onClick={submit}
+                                                            onMouseOver={(e) => (e.currentTarget.style.transform = "scale(1.1)")}
+                                                            onMouseOut={(e) => (e.currentTarget.style.transform = "scale(1)")}
+                                                        >
+                                                            Register
+                                                        </button><br />
+                                                        <button
+                                                            type="button"
+                                                            class="btn text-white mt-2"
+                                                            style={{
+                                                                background: "#E53D3D",
+                                                                width: "100px",
+                                                                transition: "transform 0.3s ease",
+                                                            }}
+                                                            onClick={() => navigate(-1)}
+                                                            onMouseOver={(e) => (e.currentTarget.style.transform = "scale(1.1)")}
+                                                            onMouseOut={(e) => (e.currentTarget.style.transform = "scale(1)")}
+                                                        >
+                                                            Cancel
+                                                        </button>
                                                     </div>
 
                                                 </div>

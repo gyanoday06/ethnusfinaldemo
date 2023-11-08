@@ -1,10 +1,5 @@
 import React, { useState } from "react";
-import { Link } from 'react-router-dom';
 import wall2 from "../siteImages/wall2.jpg";
-import wall4 from "../siteImages/wall4.jpg";
-import img1 from "../siteImages/img1.png";
-import img2 from "../siteImages/img2.png";
-
 function HeaderNew() {
     const [showDropdown, setShowDropdown] = useState(false);
 
@@ -41,9 +36,6 @@ function HeaderNew() {
                             </div>
                         </div>
                     </div>
-                    <div className="item">
-                        <img src={wall4} alt="" />
-                        </div>
                 </div>
                  
             </header>

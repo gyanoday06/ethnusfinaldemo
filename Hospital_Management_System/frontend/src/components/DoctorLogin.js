@@ -1,4 +1,3 @@
-import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { Link, Navigate, NavLink, props } from 'react-router-dom'
 import { useNavigate } from "react-router-dom";
@@ -9,27 +8,6 @@ export default function DoctorLogin() {
 
 
     const [doctors, setDoctors] = useState([]);
-
-
-    useEffect(function () {
-
-
-        function getDoctorName() {
-            axios.get("http://localhost:8050/doctor/readDoctor").then(function (res) {
-
-                console.log(res.data);
-
-                setDoctors(res.data);
-
-
-
-            }).catch(function (err) {
-                alert("data not fech" + err);
-            })
-        }
-        getDoctorName();
-
-    }, [])
 
 
     const [userName, setUserName] = useState("");
